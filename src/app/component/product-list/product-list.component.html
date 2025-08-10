@@ -1,0 +1,30 @@
+<div class="container">
+  <div *ngIf="loading" class="loading-spinner">Loading...</div>
+
+  <table class="product-table" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price (₹)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of filtered">
+        <td>
+          <img [src]="asImageSrc(p)" alt="{{p.name}}" class="product-image" />
+        </td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.price }}</td>
+        <td>
+          <button class="btn-add-cart" (click)="addToCart(p)">
+            🛒 Add to Cart
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
